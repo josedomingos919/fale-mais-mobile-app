@@ -6,7 +6,7 @@ import AppRoutes from './src/routes'
 export default function App() {
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar hidden={true} />
       <AppRoutes />
     </>
   )
