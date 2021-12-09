@@ -33,7 +33,11 @@ export default function Login() {
           />
 
           <Button
-            leftIcon={Icons.Entypo({ name: 'key', color: color.Secundary })}
+            leftIcon={Icons.Entypo({
+              name: 'login',
+              size: 15,
+              color: color.Secundary,
+            })}
             top={40}
             label="Entrar"
           />

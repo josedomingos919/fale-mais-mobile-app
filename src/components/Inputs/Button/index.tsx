@@ -14,7 +14,12 @@ const Button: FC<ButtonProps> = ({
   ...props
 }): ReactElement => {
   return (
-    <Container top={top} onPress={onPress} {...props} activeOpacity={0.8}>
+    <Container
+      top={top}
+      onPress={isLoading ? () => {} : onPress}
+      {...props}
+      activeOpacity={0.8}
+    >
       <IconView>
         {(isLoading && (
           <ActivityIndicator color={color.Secundary} size={'small'} />
