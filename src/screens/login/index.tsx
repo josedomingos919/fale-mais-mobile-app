@@ -18,13 +18,15 @@ export default function Login() {
           <TitleContainer label="Login" />
 
           <TextBox
+            label="Entrar"
             leftIcon={Icons.Entypo({ name: 'email' })}
-            placeholder="Email"
+            placeholder="ex.: jose35@gmail.com"
           />
           <TextBox
+            label="Senha"
             leftIcon={Icons.Entypo({ name: 'key' })}
-            placeholder="Senha"
-            top={15}
+            placeholder="ex.: 123.qwe"
+            top={18}
           />
         </PageContent>
       </Container>

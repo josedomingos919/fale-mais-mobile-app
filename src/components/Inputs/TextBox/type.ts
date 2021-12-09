@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 
 export type TextBoxProps = {
+  label?: string
   top?: number
   placeholder?: string
   leftIcon?: ReactElement

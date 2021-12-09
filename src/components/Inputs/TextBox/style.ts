@@ -17,3 +17,12 @@ export const TextInput = styled.TextInput<InputType>`
   flex: 1;
   height: 100%;
 `
+export const Label = styled.Text`
+  position: absolute;
+  top: -15px;
+  margin-bottom: -18px;
+  margin-left: 27px;
+  color: ${color.fristBlue};
+  background-color: ${color.Secundary};
+  padding: 5px;
+`
