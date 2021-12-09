@@ -9,6 +9,7 @@ import Button from '../../components/Inputs/Button'
 import { color } from '../../utilities/color'
 import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
 import FloatButton from '../../components/Inputs/FloatButton'
+import { alert } from '../../components/Shared/alert'
 
 export default function Login() {
   return (
@@ -42,6 +43,13 @@ export default function Login() {
                 color: color.Secundary,
               })}
               top={40}
+              onPress={() => {
+                alert({
+                  type: 'error',
+                  message: 'Teste ygdsklfkjdghf',
+                  title: 'Teste',
+                })
+              }}
               label="Entrar"
             />
 
