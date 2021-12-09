@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MainContainer from '../../components/containers/main'
 import { Container, Header, Image, PageContent } from './styles'
 import { Icon } from './../../assets'
@@ -9,9 +9,26 @@ import Button from '../../components/Inputs/Button'
 import { color } from '../../utilities/color'
 import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
 import FloatButton from '../../components/Inputs/FloatButton'
-import { alert } from '../../components/Shared/alert'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { doLogin } from '../../store/reducers/login'
 
 export default function Login() {
+  const dispatch = useAppDispatch()
+  const data = useAppSelector((state) => state.loginReducer)
+
+  useEffect(() => {
+    console.log('data=>', data)
+  }, [data])
+
+  function handleLogin() {
+    dispatch(
+      doLogin({
+        email: 'teste',
+        password: 'tehsg3974',
+      }),
+    )
+  }
+
   return (
     <MainContainer>
       <>
@@ -43,13 +60,7 @@ export default function Login() {
                 color: color.Secundary,
               })}
               top={40}
-              onPress={() => {
-                alert({
-                  type: 'error',
-                  message: 'Teste ygdsklfkjdghf',
-                  title: 'Teste',
-                })
-              }}
+              onPress={handleLogin}
               label="Entrar"
             />
 
