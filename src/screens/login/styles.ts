@@ -24,6 +24,7 @@ export const Image = styled.Image`
 `
 
 export const PageContent = styled.View`
+  position: relative;
   padding: 20px;
   margin-top: -15px;
   border-top-right-radius: 10px;
