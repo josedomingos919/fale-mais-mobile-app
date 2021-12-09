@@ -10,7 +10,7 @@ const Button: FC<ButtonProps> = ({
   label,
   leftIcon,
   top = DEFAULT_TOP_VALUE,
-  onPress,
+  onPress = () => {},
   ...props
 }): ReactElement => {
   return (
