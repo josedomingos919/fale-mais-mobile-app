@@ -14,7 +14,7 @@ export const Text = styled.Text`
   color: ${color.fristBlue};
   border: 0px solid ${color.balckOpacity1};
   padding-bottom: 5px;
-  font-size: ${font.size.large};
+  font-size: ${font.size.large}px;
   padding-left: 15px;
   padding-right: 15px;
   border-bottom-width: 2px;
