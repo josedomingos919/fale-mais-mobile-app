@@ -1,22 +1,22 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { RootStackParamList } from './types'
-
-import LoginScreen from '../screens/login'
+import HomeScreen from '../screens/home'
+import ConsultScreen from '../screens/consult'
 
 const RootStack = createStackNavigator<RootStackParamList>()
 
 export default function PublicRoutes() {
   return (
-    <RootStack.Navigator initialRouteName="Login">
+    <RootStack.Navigator initialRouteName="Home">
       <RootStack.Screen
-        name="Login"
+        name="Home"
         options={{
           headerShown: false,
         }}
-        component={LoginScreen}
+        component={HomeScreen}
       />
-      <RootStack.Screen name="Home" component={LoginScreen} />
+      <RootStack.Screen name="Consult" component={ConsultScreen} />
     </RootStack.Navigator>
   )
 }

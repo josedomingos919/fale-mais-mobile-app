@@ -12,7 +12,7 @@ import FloatButton from '../../components/Inputs/FloatButton'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { doLogin } from '../../store/reducers/login'
 
-export default function Login() {
+export default function Consult() {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.loginReducer)
 
