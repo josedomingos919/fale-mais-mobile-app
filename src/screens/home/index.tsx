@@ -53,9 +53,17 @@ export default function Login({ navigation }: ScreenProps) {
     }
   }
 
+  async function resetFormData() {
+    setSelectedPlan(0)
+    setCallDurationValue(undefined)
+    setOriginValue(0)
+    setDestinationValue(0)
+    setIsLoading(false)
+  }
+
   async function handleCalc() {
     const formData = isFormOk({
-      data: data.plans,
+      data: data.prices,
       selectedPlan,
       callDurationValue,
       originValue,
@@ -83,6 +91,8 @@ export default function Login({ navigation }: ScreenProps) {
       dispatch(saveCalc({ calc: respose.data }))
       navigation.navigate('Consult')
     }
+
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -182,6 +192,7 @@ export default function Login({ navigation }: ScreenProps) {
         </Container>
 
         <FloatButton
+          onPress={() => resetFormData()}
           icon={Icons.MaterialCommunityIcons({
             name: 'progress-close',
             color: color.Secundary,

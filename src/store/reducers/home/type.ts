@@ -16,9 +16,19 @@ export type PriceType = {
   createdAt: string
   updatedAt: string
 }
+export type CalcType = {
+  origin: string
+  destination: string
+  duration: number
+  minutesOut: number
+  totalWithTolkMore: number
+  totalWithOutTolkMore: number
+  plan: PlanType
+  price: PriceType
+}
 
 export interface HomeStateProps {
   plans?: Array<PlanType>
   prices?: Array<PriceType>
-  calc?: Object
+  calc?: CalcType
 }

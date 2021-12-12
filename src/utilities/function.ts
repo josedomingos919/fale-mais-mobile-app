@@ -53,3 +53,8 @@ export const isEmpty = (val: any) => {
     return r
   }
 }
+
+export const formatMonay = (val: any = 0) =>
+  (typeof val == 'string' ? parseFloat(val) : val)
+    .toFixed(2)
+    .replace(/\d(?=(\d{3})+\.)/g, '$&,')
