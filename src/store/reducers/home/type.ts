@@ -8,6 +8,16 @@ export type PlanType = {
   updatedAt: string
 }
 
-export interface HomeProps {
-  plans: Array<PlanType>
+export type PriceType = {
+  id: number
+  origin: string
+  destination: string
+  tariff: number
+  createdAt: string
+  updatedAt: string
+}
+
+export interface HomeStateProps {
+  plans?: Array<PlanType>
+  prices?: Array<PriceType>
 }

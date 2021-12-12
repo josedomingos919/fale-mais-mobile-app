@@ -1,5 +1,5 @@
 interface TypeSelectData {
-  data: Array<any>
+  data?: Array<any>
   labelKey: string
   valueKey: string
 }

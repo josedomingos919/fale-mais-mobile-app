@@ -1,21 +1,27 @@
 // DUCKS Pattern
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { HomeProps } from './type'
+import { HomeStateProps } from './type'
 
-const initialState: HomeProps = {
+const initialState: HomeStateProps = {
   plans: [],
+  prices: [],
 }
 
 const homeSlice = createSlice({
   name: 'home',
   initialState,
+
   reducers: {
-    setPlans(state, action: PayloadAction<HomeProps>) {
+    setPrices(state, action: PayloadAction<HomeStateProps>) {
+      state.prices = action.payload.prices
+    },
+
+    setPlans(state, action: PayloadAction<HomeStateProps>) {
       state.plans = action.payload.plans
     },
   },
 })
 
-export const { setPlans } = homeSlice.actions
+export const { setPlans, setPrices } = homeSlice.actions
 
 export default homeSlice.reducer

@@ -11,9 +11,10 @@ import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
 import FloatButton from '../../components/Inputs/FloatButton'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Select from '../../components/Inputs/Select'
-import { getAllPlan } from '../../api/api.routes'
-import { setPlans } from '../../store/reducers/home'
+import { getAllPlan, getAllPrice } from '../../api/api.routes'
+import { setPlans, setPrices } from '../../store/reducers/home'
 import { getSelectData } from '../../utilities/function'
+import { alert } from '../../components/Shared/alert'
 
 export default function Login() {
   const dispatch = useAppDispatch()
@@ -23,8 +24,28 @@ export default function Login() {
   const [callDuration, setCallDuration] = useState()
 
   async function inicialize() {
-    const planData = await getAllPlan()
-    dispatch(setPlans({ plans: planData }))
+    const planResponse = await getAllPlan()
+    const priceResponse = await getAllPrice()
+
+    if (planResponse.error) {
+      alert({
+        message: planResponse.message,
+        title: 'Atenção!',
+        type: 'error',
+      })
+    } else {
+      dispatch(setPlans({ plans: planResponse.data }))
+    }
+
+    if (priceResponse.error) {
+      alert({
+        message: priceResponse.message,
+        title: 'Atenção!',
+        type: 'error',
+      })
+    } else {
+      dispatch(setPrices({ prices: priceResponse.data }))
+    }
   }
 
   useEffect(() => {
