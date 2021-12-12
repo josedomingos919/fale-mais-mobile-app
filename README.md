@@ -2,6 +2,13 @@
 “Show me the code”
 
 
+# Desafio
+
+A empresa de telefonia Telzir, especializada em chamadas de longa distância nacional, 
+vai colocar um novo produto no mercado chamado FaleMais. Normalmente um cliente 
+Telzir pode fazer uma chamada de uma cidade para outra pagando uma tarifa fixa por 
+minuto, com o preço sendo pré-definido em uma lista com os códigos DDDs de origem 
+e destino:
 
 Com o novo produto FaleMais da Telzir o cliente adquire um plano e pode falar de graça até 
 um determinado tempo (em minutos) e só paga os minutos excedentes. Os minutos 
