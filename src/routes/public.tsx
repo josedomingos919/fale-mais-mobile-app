@@ -16,7 +16,11 @@ export default function PublicRoutes() {
         }}
         component={HomeScreen}
       />
-      <RootStack.Screen name="Consult" component={ConsultScreen} />
+      <RootStack.Screen
+        key="Consult"
+        name="Consult"
+        component={ConsultScreen}
+      />
     </RootStack.Navigator>
   )
 }

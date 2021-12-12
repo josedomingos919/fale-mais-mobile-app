@@ -16,8 +16,10 @@ import { setPlans, setPrices } from '../../store/reducers/home'
 import { getSelectData } from '../../utilities/function'
 import { alert } from '../../components/Shared/alert'
 import { getDistictOrigin, getOriginNameByPriceId } from './script'
+import { useNavigation } from '@react-navigation/native'
 
-export default function Login() {
+export default function Login(props) {
+  const navigation = useNavigation()
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.homeReducer)
 
@@ -49,6 +51,10 @@ export default function Login() {
     } else {
       dispatch(setPrices({ prices: priceResponse.data }))
     }
+  }
+
+  function handleCalc() {
+    //  props.navigation.navigate('Consult')
   }
 
   useEffect(() => {
@@ -138,7 +144,7 @@ export default function Login() {
                 color: color.Secundary,
               })}
               top={60}
-              onPress={() => {}}
+              onPress={() => handleCalc()}
               label="Calcular"
             />
 

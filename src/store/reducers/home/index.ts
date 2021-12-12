@@ -5,6 +5,7 @@ import { HomeStateProps } from './type'
 const initialState: HomeStateProps = {
   plans: [],
   prices: [],
+  calc: {},
 }
 
 const homeSlice = createSlice({
@@ -19,9 +20,13 @@ const homeSlice = createSlice({
     setPlans(state, action: PayloadAction<HomeStateProps>) {
       state.plans = action.payload.plans
     },
+
+    saveCalc(state, action: PayloadAction<HomeStateProps>) {
+      state.calc = action.payload.calc
+    },
   },
 })
 
-export const { setPlans, setPrices } = homeSlice.actions
+export const { setPlans, setPrices, saveCalc } = homeSlice.actions
 
 export default homeSlice.reducer

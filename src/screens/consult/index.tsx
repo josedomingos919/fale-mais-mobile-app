@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import MainContainer from '../../components/containers/main'
 import { Container, Header, Image, PageContent } from './styles'
 import { Icon } from './../../assets'
@@ -10,24 +10,12 @@ import { color } from '../../utilities/color'
 import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
 import FloatButton from '../../components/Inputs/FloatButton'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { doLogin } from '../../store/reducers/login'
+import { useNavigation } from '@react-navigation/native'
 
 export default function Consult() {
+  const navigation = useNavigation()
   const dispatch = useAppDispatch()
-  const data = useAppSelector((state) => state.loginReducer)
-
-  useEffect(() => {
-    console.log('data=>', data)
-  }, [data])
-
-  function handleLogin() {
-    dispatch(
-      doLogin({
-        email: 'teste',
-        password: 'tehsg3974',
-      }),
-    )
-  }
+  const data = useAppSelector((state) => state.homeReducer)
 
   return (
     <MainContainer>
@@ -60,7 +48,7 @@ export default function Consult() {
                 color: color.Secundary,
               })}
               top={40}
-              onPress={handleLogin}
+              onPress={() => navigation.goBack()}
               label="Entrar"
             />
 

@@ -20,4 +20,5 @@ export type PriceType = {
 export interface HomeStateProps {
   plans?: Array<PlanType>
   prices?: Array<PriceType>
+  calc?: Object
 }
