@@ -70,7 +70,7 @@ export const isFormOk = ({
 
   return {
     origin: getPriceItemById({ data, id: originValue }).origin,
-    destination: getPriceItemById({ data, id: originValue }).destination,
+    destination: getPriceItemById({ data, id: destinationValue }).destination,
     duration: callDurationValue,
     planId: selectedPlan,
   }
