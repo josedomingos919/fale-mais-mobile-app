@@ -1,7 +1,7 @@
 # fale-mais-mobile-app
 “Show me the code”
 
-##  Steps to raun the application 
+##  Steps to run the application 
 “You to have expo running in your PC”
 
 1- Clone the repo
