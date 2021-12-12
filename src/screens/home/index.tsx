@@ -17,6 +17,8 @@ import { getSelectData } from '../../utilities/function'
 import { alert } from '../../components/Shared/alert'
 import { getDistictOrigin, getOriginNameByPriceId, isFormOk } from './script'
 import { ScreenProps } from '../../routes/types'
+import { Linking } from 'react-native'
+import { COMPANY_LINKEDIN } from '../../utilities/const'
 
 export default function Login({ navigation }: ScreenProps) {
   const dispatch = useAppDispatch()
@@ -187,7 +189,13 @@ export default function Login({ navigation }: ScreenProps) {
               label="Calcular"
             />
 
-            <TouchAbleLable top={22} label="Saiba mais... ?" />
+            <TouchAbleLable
+              onPress={() => {
+                Linking.openURL(COMPANY_LINKEDIN)
+              }}
+              top={22}
+              label="Saiba mais... ?"
+            />
           </PageContent>
         </Container>
 
