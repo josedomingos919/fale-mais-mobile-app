@@ -1,8 +1,6 @@
 # fale-mais-mobile-app
 “Show me the code”
 
-##  Steps to run the application 
-“You to have expo running in your PC”
 
 
 Com o novo produto FaleMais da Telzir o cliente adquire um plano e pode falar de graça até 
@@ -17,6 +15,10 @@ plano FaleMais. O sistema deve mostrar dois valores: (1) o valor da ligação co
 sem o plano. O custo inicial de aquisição do plano deve ser desconsiderado para este 
 problema
 
+
+
+##  Steps to run the application 
+“You to have expo running in your PC”
 
 1- Clone the repo
 
