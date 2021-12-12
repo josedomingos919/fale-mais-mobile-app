@@ -11,8 +11,8 @@ import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
 import FloatButton from '../../components/Inputs/FloatButton'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Select from '../../components/Inputs/Select'
-import { getAllPlan, getAllPrice } from '../../api/api.routes'
-import { setPlans, setPrices } from '../../store/reducers/home'
+import { getAllPlan, getAllPrice, getCalc } from '../../api/api.routes'
+import { saveCalc, setPlans, setPrices } from '../../store/reducers/home'
 import { getSelectData } from '../../utilities/function'
 import { alert } from '../../components/Shared/alert'
 import { getDistictOrigin, getOriginNameByPriceId, isFormOk } from './script'
@@ -26,6 +26,7 @@ export default function Login({ navigation }: ScreenProps) {
   const [callDurationValue, setCallDurationValue] = useState(undefined)
   const [originValue, setOriginValue] = useState(0)
   const [destinationValue, setDestinationValue] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   async function inicialize() {
     const planResponse = await getAllPlan()
@@ -52,7 +53,7 @@ export default function Login({ navigation }: ScreenProps) {
     }
   }
 
-  function handleCalc() {
+  async function handleCalc() {
     const formData = isFormOk({
       data: data.plans,
       selectedPlan,
@@ -63,8 +64,25 @@ export default function Login({ navigation }: ScreenProps) {
 
     if (!formData) return
 
-    navigation.navigate('Consult')
-    //getCalc
+    setIsLoading(true)
+
+    const respose = await getCalc({
+      destination: formData.destination,
+      origin: formData.origin,
+      planId: formData.planId,
+      duration: formData.duration,
+    })
+
+    if (respose.error) {
+      alert({
+        title: 'Erro!',
+        message: 'Não foi possivel calcular, tente mais tarde!',
+        type: 'error',
+      })
+    } else {
+      dispatch(saveCalc({ calc: respose.data }))
+      navigation.navigate('Consult')
+    }
   }
 
   useEffect(() => {
@@ -148,6 +166,7 @@ export default function Login({ navigation }: ScreenProps) {
             />
 
             <Button
+              isLoading={isLoading}
               leftIcon={Icons.Entypo({
                 name: 'login',
                 size: 15,

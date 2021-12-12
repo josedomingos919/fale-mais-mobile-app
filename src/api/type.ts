@@ -1,6 +1,6 @@
 export type CalcType = {
-  origin: string
-  destination: string
-  duration: number
-  planId: number
+  origin: string | undefined
+  destination: string | undefined
+  duration: number | string | undefined
+  planId: number | string | undefined
 }
