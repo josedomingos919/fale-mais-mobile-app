@@ -15,13 +15,16 @@ import { getAllPlan, getAllPrice } from '../../api/api.routes'
 import { setPlans, setPrices } from '../../store/reducers/home'
 import { getSelectData } from '../../utilities/function'
 import { alert } from '../../components/Shared/alert'
+import { getDistictOrigin, getOriginNameByPriceId } from './script'
 
 export default function Login() {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.homeReducer)
 
   const [selectedPlan, setSelectedPlan] = useState()
-  const [callDuration, setCallDuration] = useState()
+  const [callDurationValue, setCallDurationValue] = useState()
+  const [originValue, setOriginValue] = useState(0)
+  const [destinationValue, setDestinationValue] = useState(0)
 
   async function inicialize() {
     const planResponse = await getAllPlan()
@@ -52,6 +55,10 @@ export default function Login() {
     inicialize()
   }, [])
 
+  useEffect(() => {
+    setDestinationValue(0)
+  }, [originValue])
+
   return (
     <MainContainer>
       <>
@@ -64,20 +71,37 @@ export default function Login() {
             <TitleContainer label="Custo da ligação" />
 
             <Select
-              data={[]}
-              label="Origem"
+              data={getDistictOrigin(
+                getSelectData({
+                  data: data.prices,
+                  labelKey: 'origin',
+                  valueKey: 'id',
+                }),
+              )}
               leftIcon={Icons.MaterialCommunityIcons({
                 name: 'phone-outgoing',
               })}
+              label="Origem"
+              selectedValue={originValue}
+              setSelectedValue={setOriginValue}
             />
 
             <Select
-              data={[]}
-              label="Destino"
+              data={getSelectData({
+                data: getOriginNameByPriceId({
+                  data: data.prices || [],
+                  priceId: originValue,
+                }),
+                labelKey: 'destination',
+                valueKey: 'id',
+              })}
               leftIcon={Icons.MaterialCommunityIcons({
                 name: 'phone-incoming',
               })}
+              label="Destino"
               top={20}
+              setSelectedValue={setDestinationValue}
+              selectedValue={destinationValue}
             />
 
             <TextBox
@@ -86,9 +110,9 @@ export default function Login() {
               label="Tempo da ligação (min)"
               leftIcon={Icons.Entypo({ name: 'back-in-time' })}
               placeholder="ex.: 20"
-              value={callDuration}
+              value={callDurationValue}
               onChangeText={(value) => {
-                setCallDuration(value)
+                setCallDurationValue(value)
               }}
             />
 
