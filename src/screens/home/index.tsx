@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import MainContainer from '../../components/containers/main'
 import { Container, Header, Image, PageContent } from './styles'
 import { Icon } from '../../assets'
@@ -10,25 +10,24 @@ import { color } from '../../utilities/color'
 import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
 import FloatButton from '../../components/Inputs/FloatButton'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { doLogin } from '../../store/reducers/login'
 import Select from '../../components/Inputs/Select'
+import { getAllPlan } from '../../api/api.routes'
+import { setPlans } from '../../store/reducers/home'
+import { getSelectData } from '../../utilities/function'
 
 export default function Login() {
   const dispatch = useAppDispatch()
-  const data = useAppSelector((state) => state.loginReducer)
+  const data = useAppSelector((state) => state.homeReducer)
+  const [selectedPlan, setSelectedPlan] = useState({})
+
+  async function inicialize() {
+    const planData = await getAllPlan()
+    dispatch(setPlans({ plans: planData }))
+  }
 
   useEffect(() => {
-    console.log('data=>', data)
-  }, [data])
-
-  function handleLogin() {
-    dispatch(
-      doLogin({
-        email: 'teste',
-        password: 'tehsg3974',
-      }),
-    )
-  }
+    inicialize()
+  }, [])
 
   return (
     <MainContainer>
@@ -39,7 +38,7 @@ export default function Login() {
           </Header>
 
           <PageContent>
-            <TitleContainer label="Consultar Valor" />
+            <TitleContainer label="Custo da ligação" />
 
             <Select
               data={[]}
@@ -67,7 +66,13 @@ export default function Login() {
             />
 
             <Select
-              data={[]}
+              selectedValue={selectedPlan}
+              setSelectedValue={setSelectedPlan}
+              data={getSelectData({
+                data: data.plans,
+                labelKey: 'name',
+                valueKey: 'id',
+              })}
               label="Plano"
               leftIcon={Icons.MaterialCommunityIcons({
                 name: 'account-tie-voice-outline',
@@ -82,7 +87,7 @@ export default function Login() {
                 color: color.Secundary,
               })}
               top={60}
-              onPress={handleLogin}
+              onPress={() => {}}
               label="Calcular"
             />
 

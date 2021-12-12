@@ -24,6 +24,7 @@ const Select: FC<SelectProps> = ({
         selectedValue={selectedValue}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
       >
+        <Picker.Item label="..." key="-1" value="" />
         {data.map(({ value, label }, index) => (
           <Picker.Item label={label} key={index} value={value} />
         ))}
