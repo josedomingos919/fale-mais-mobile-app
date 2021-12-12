@@ -18,7 +18,9 @@ import { getSelectData } from '../../utilities/function'
 export default function Login() {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.homeReducer)
-  const [selectedPlan, setSelectedPlan] = useState({})
+
+  const [selectedPlan, setSelectedPlan] = useState()
+  const [callDuration, setCallDuration] = useState()
 
   async function inicialize() {
     const planData = await getAllPlan()
@@ -63,6 +65,10 @@ export default function Login() {
               label="Tempo da ligação (min)"
               leftIcon={Icons.Entypo({ name: 'back-in-time' })}
               placeholder="ex.: 20"
+              value={callDuration}
+              onChangeText={(value) => {
+                setCallDuration(value)
+              }}
             />
 
             <Select

@@ -6,6 +6,8 @@ export type TextBoxProps = {
   keyboardType?: string
   placeholder?: string
   leftIcon?: ReactElement
+  value?: any
+  onChangeText?: (value: any) => any
 }
 
 export type ContainerType = {
