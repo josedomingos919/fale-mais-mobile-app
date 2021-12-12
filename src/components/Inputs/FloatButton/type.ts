@@ -6,7 +6,7 @@ export type ButtonProps = {
   top?: number
   placeholder?: string
   icon?: ReactElement
-  onPress?: () => {}
+  onPress?: () => any
 }
 
 export type ContainerType = {

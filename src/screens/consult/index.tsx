@@ -3,18 +3,13 @@ import MainContainer from '../../components/containers/main'
 import { Container, Header, Image, PageContent } from './styles'
 import { Icon } from './../../assets'
 import TitleContainer from '../../components/containers/title'
-import TextBox from '../../components/Inputs/TextBox'
 import { Icons } from '../../components/icons'
-import Button from '../../components/Inputs/Button'
 import { color } from '../../utilities/color'
-import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
 import FloatButton from '../../components/Inputs/FloatButton'
-import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { useNavigation } from '@react-navigation/native'
+import { useAppSelector } from '../../store/hooks'
+import { ScreenProps } from '../../routes/types'
 
-export default function Consult() {
-  const navigation = useNavigation()
-  const dispatch = useAppDispatch()
+export default function Consult({ navigation }: ScreenProps) {
   const data = useAppSelector((state) => state.homeReducer)
 
   return (
@@ -26,39 +21,14 @@ export default function Consult() {
           </Header>
 
           <PageContent>
-            <TitleContainer label="Login" />
-
-            <TextBox
-              label="Entrar"
-              leftIcon={Icons.Entypo({ name: 'email' })}
-              placeholder="ex.: jose35@gmail.com"
-            />
-
-            <TextBox
-              label="Senha"
-              leftIcon={Icons.Entypo({ name: 'key' })}
-              placeholder="ex.: 123.qwe"
-              top={18}
-            />
-
-            <Button
-              leftIcon={Icons.Entypo({
-                name: 'login',
-                size: 15,
-                color: color.Secundary,
-              })}
-              top={40}
-              onPress={() => navigation.goBack()}
-              label="Entrar"
-            />
-
-            <TouchAbleLable top={22} label="Clique aqui se perdeu a senha ?" />
+            <TitleContainer label="Resultado" />
           </PageContent>
         </Container>
 
         <FloatButton
-          icon={Icons.Feather({
-            name: 'user-plus',
+          onPress={() => navigation.goBack()}
+          icon={Icons.Entypo({
+            name: 'arrow-with-circle-left',
             color: color.Secundary,
           })}
           label="Novo"

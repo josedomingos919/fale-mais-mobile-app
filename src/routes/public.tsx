@@ -17,7 +17,9 @@ export default function PublicRoutes() {
         component={HomeScreen}
       />
       <RootStack.Screen
-        key="Consult"
+        options={{
+          headerShown: false,
+        }}
         name="Consult"
         component={ConsultScreen}
       />

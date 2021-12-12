@@ -15,16 +15,15 @@ import { getAllPlan, getAllPrice } from '../../api/api.routes'
 import { setPlans, setPrices } from '../../store/reducers/home'
 import { getSelectData } from '../../utilities/function'
 import { alert } from '../../components/Shared/alert'
-import { getDistictOrigin, getOriginNameByPriceId } from './script'
-import { useNavigation } from '@react-navigation/native'
+import { getDistictOrigin, getOriginNameByPriceId, isFormOk } from './script'
+import { ScreenProps } from '../../routes/types'
 
-export default function Login(props) {
-  const navigation = useNavigation()
+export default function Login({ navigation }: ScreenProps) {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.homeReducer)
 
-  const [selectedPlan, setSelectedPlan] = useState()
-  const [callDurationValue, setCallDurationValue] = useState()
+  const [selectedPlan, setSelectedPlan] = useState(0)
+  const [callDurationValue, setCallDurationValue] = useState(undefined)
   const [originValue, setOriginValue] = useState(0)
   const [destinationValue, setDestinationValue] = useState(0)
 
@@ -54,7 +53,18 @@ export default function Login(props) {
   }
 
   function handleCalc() {
-    //  props.navigation.navigate('Consult')
+    const formData = isFormOk({
+      data: data.plans,
+      selectedPlan,
+      callDurationValue,
+      originValue,
+      destinationValue,
+    })
+
+    if (!formData) return
+
+    navigation.navigate('Consult')
+    //getCalc
   }
 
   useEffect(() => {
@@ -77,13 +87,13 @@ export default function Login(props) {
             <TitleContainer label="Custo da ligação" />
 
             <Select
-              data={getDistictOrigin(
-                getSelectData({
+              data={getDistictOrigin({
+                data: getSelectData({
                   data: data.prices,
                   labelKey: 'origin',
                   valueKey: 'id',
                 }),
-              )}
+              })}
               leftIcon={Icons.MaterialCommunityIcons({
                 name: 'phone-outgoing',
               })}
