@@ -8,3 +8,5 @@ export const alert = ({ message, type, title }: alertType) => {
     text2: message,
   })
 }
+
+alert.hide = Toast.hide

@@ -1,13 +1,18 @@
 import { ReactElement } from 'react'
 
-export type TextBoxProps = {
+export type SelectItemType = {
+  value: any
+  label: string
+}
+
+export type SelectProps = {
+  data: Array<SelectItemType>
   label?: string
   top?: number
-  keyboardType?: string
   placeholder?: string
   leftIcon?: ReactElement
-  value?: any
-  onChangeText?: (value: any) => any
+  selectedValue?: any
+  setSelectedValue?: (value: any) => any
 }
 
 export type ContainerType = {

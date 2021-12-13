@@ -1,7 +1,7 @@
 export type TouchAbleLableProps = {
   label?: string
   top?: number
-  onPress?: () => {}
+  onPress?: () => any
 }
 
 export type ContainerType = {

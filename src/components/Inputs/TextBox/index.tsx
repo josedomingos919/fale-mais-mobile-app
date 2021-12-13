@@ -7,6 +7,8 @@ const TextBox: FC<TextBoxProps> = ({
   label,
   leftIcon,
   top = DEFAULT_TOP_VALUE,
+  onChangeText = (val) => {},
+  value = null,
   ...props
 }): ReactElement => {
   return (
@@ -14,7 +16,12 @@ const TextBox: FC<TextBoxProps> = ({
       <Container top={top}>
         <Label>{label}</Label>
         {leftIcon}
-        <TextInput marginLeft={leftIcon && 8 | 0} {...props} />
+        <TextInput
+          onChangeText={onChangeText}
+          value={value}
+          marginLeft={leftIcon && 8 | 0}
+          {...props}
+        />
       </Container>
     </>
   )
