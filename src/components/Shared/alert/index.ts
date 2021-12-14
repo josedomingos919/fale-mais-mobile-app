@@ -1,7 +1,7 @@
 import Toast from 'react-native-toast-message'
-import { alertType } from './type'
+import { AlertType } from './type'
 
-export const alert = ({ message, type, title }: alertType) => {
+export const alert = ({ message, type, title }: AlertType) => {
   Toast.show({
     type,
     text1: title,

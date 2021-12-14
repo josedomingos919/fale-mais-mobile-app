@@ -124,7 +124,8 @@ export default function Login({ navigation }: ScreenProps) {
                   valueKey: 'id',
                 }),
               })}
-              leftIcon={Icons.MaterialCommunityIcons({
+              leftIcon={Icons({
+                type: 'MaterialCommunityIcons',
                 name: 'phone-outgoing',
               })}
               label="Origem"
@@ -141,7 +142,8 @@ export default function Login({ navigation }: ScreenProps) {
                 labelKey: 'destination',
                 valueKey: 'id',
               })}
-              leftIcon={Icons.MaterialCommunityIcons({
+              leftIcon={Icons({
+                type: 'MaterialCommunityIcons',
                 name: 'phone-incoming',
               })}
               label="Destino"
@@ -154,7 +156,7 @@ export default function Login({ navigation }: ScreenProps) {
               top={24}
               keyboardType="numeric"
               label="Tempo da ligação (min)"
-              leftIcon={Icons.Entypo({ name: 'back-in-time' })}
+              leftIcon={Icons({ type: 'Entypo', name: 'back-in-time' })}
               placeholder="ex.: 20"
               value={callDurationValue}
               onChangeText={(value) => {
@@ -171,7 +173,8 @@ export default function Login({ navigation }: ScreenProps) {
                 valueKey: 'id',
               })}
               label="Plano"
-              leftIcon={Icons.MaterialCommunityIcons({
+              leftIcon={Icons({
+                type: 'MaterialCommunityIcons',
                 name: 'account-tie-voice-outline',
               })}
               top={26}
@@ -179,10 +182,11 @@ export default function Login({ navigation }: ScreenProps) {
 
             <Button
               isLoading={isLoading}
-              leftIcon={Icons.Entypo({
+              leftIcon={Icons({
+                type: 'Entypo',
                 name: 'login',
                 size: 15,
-                color: color.Secundary,
+                color: color.Secondary,
               })}
               top={60}
               onPress={() => handleCalc()}
@@ -201,9 +205,10 @@ export default function Login({ navigation }: ScreenProps) {
 
         <FloatButton
           onPress={() => resetFormData()}
-          icon={Icons.MaterialCommunityIcons({
+          icon={Icons({
+            type: 'MaterialCommunityIcons',
             name: 'progress-close',
-            color: color.Secundary,
+            color: color.Secondary,
           })}
           label="Novo"
         />

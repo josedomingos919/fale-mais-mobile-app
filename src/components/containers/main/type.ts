@@ -1,5 +1,3 @@
-import { ReactElement } from 'react'
-
 export type MainProps = {
-  children: ReactElement
+  children: JSX.Element
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 import { color } from '../../utilities/color'
 
 export const Container = styled.ScrollView`
-  background-color: ${color.Secundary};
+  background-color: ${color.Secondary};
 `
 export const Header = styled.View`
   height: 150px;
@@ -14,7 +14,7 @@ export const Header = styled.View`
 `
 
 export const HeaderText = styled.Text`
-  color: ${color.Secundary};
+  color: ${color.Secondary};
   font-size: 14px;
   font-weight: bold;
 `
@@ -31,6 +31,6 @@ export const PageContent = styled.View`
   border-top-left-radius: 10px;
   width: 100%;
   height: 100%;
-  background-color: ${color.Secundary};
+  background-color: ${color.Secondary};
   flex: 1;
 `
