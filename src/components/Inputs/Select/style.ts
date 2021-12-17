@@ -23,7 +23,12 @@ export const Label = styled.Text`
   top: -15px;
   margin-bottom: -18px;
   margin-left: 27px;
+<<<<<<< HEAD
   color: ${color.firstBlue};
   background-color: ${color.Secondary};
+=======
+  color: ${color.fristBlue};
+  background-color: ${color.Secundary};
+>>>>>>> 903daffea7834103e0d63efbf7f9c3f652a52dfd
   padding: 5px;
 `

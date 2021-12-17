@@ -1,18 +1,18 @@
 import React from 'react'
 import MainContainer from '../../components/containers/main'
-import {
-  CardTotal,
-  Container,
-  ContainerTotal,
-  Header,
+import { 
   Image,
-  MoneyTextTotal,
-  PageContent,
+  Header,
+  CardTotal,
   TextTotal,
+  Container,
+  PageContent,
+  TextInfoLeft,
+  TextInfoRight,
+  ContainerTotal,
+  MoneyTextTotal,
   ContainerMoreInfo,
   ContainerMoreInfoLine,
-  TextInfoRight,
-  TextInfoLeft,
 } from './styles'
 import { Icon } from './../../assets'
 import TitleContainer from '../../components/containers/title'
@@ -35,7 +35,7 @@ export default function Consult({ navigation }: ScreenProps) {
           </Header>
 
           <PageContent>
-            <TitleContainer label={'Resultado'} />
+            <TitleContainer label='Resultado' />
 
             <ContainerTotal>
               <CardTotal>
