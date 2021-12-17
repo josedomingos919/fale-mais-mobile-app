@@ -3,13 +3,13 @@ import { PriceType } from '../../store/reducers/home/type'
 import { isEmpty } from '../../utilities/function'
 import {
   GetDestinationByOriginNameType,
-  GetDistictOriginType,
+  getDistinctOriginType,
   GetOriginNameByPriceIdType,
   GetPriceItemByIdType,
   IsFormOkType,
 } from './type'
 
-export const getDistictOrigin = ({ data }: GetDistictOriginType) => {
+export const getDistinctOrigin = ({ data }: getDistinctOriginType) => {
   const existingOrigin: Array<string> = []
 
   return data.filter(({ label }) => {

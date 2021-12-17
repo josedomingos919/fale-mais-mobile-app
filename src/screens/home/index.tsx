@@ -14,12 +14,12 @@ import { getAllPlan, getAllPrice, getCalc } from '../../api/api.routes'
 import { saveCalc, setPlans, setPrices } from '../../store/reducers/home'
 import { getSelectData } from '../../utilities/function'
 import { alert } from '../../components/Shared/alert'
-import { getDistictOrigin, getOriginNameByPriceId, isFormOk } from './script'
+import { getDistinctOrigin, getOriginNameByPriceId, isFormOk } from './script'
 import { ScreenProps } from '../../routes/types'
 import { Linking } from 'react-native'
 import { COMPANY_LINKEDIN } from '../../utilities/const'
 import TouchAbleLabel from '../../components/Inputs/TouchAbleLabel'
-
+ 
 export default function Login({ navigation }: ScreenProps) {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.homeReducer)
@@ -30,7 +30,7 @@ export default function Login({ navigation }: ScreenProps) {
   const [destinationValue, setDestinationValue] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
 
-  async function inicialize() {
+  async function initialize() {
     const planResponse = await getAllPlan()
     const priceResponse = await getAllPrice()
 
@@ -76,21 +76,21 @@ export default function Login({ navigation }: ScreenProps) {
 
     setIsLoading(true)
 
-    const respose = await getCalc({
+    const response = await getCalc({
       destination: formData.destination,
       origin: formData.origin,
       planId: formData.planId,
       duration: formData.duration,
     })
 
-    if (respose.error) {
+    if (response.error) {
       alert({
         title: 'Erro!',
         message: 'Não foi possivel calcular, tente mais tarde!',
         type: 'error',
       })
     } else {
-      dispatch(saveCalc({ calc: respose.data }))
+      dispatch(saveCalc({ calc: response.data }))
       navigation.navigate('Consult')
     }
 
@@ -98,7 +98,7 @@ export default function Login({ navigation }: ScreenProps) {
   }
 
   useEffect(() => {
-    inicialize()
+    initialize()
   }, [])
 
   useEffect(() => {
@@ -117,7 +117,7 @@ export default function Login({ navigation }: ScreenProps) {
             <TitleContainer label="Custo da ligação" />
 
             <Select
-              data={getDistictOrigin({
+              data={getDistinctOrigin({
                 data: getSelectData({
                   data: data.prices,
                   labelKey: 'origin',
