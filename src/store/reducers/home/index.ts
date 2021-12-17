@@ -1,11 +1,10 @@
-// DUCKS Pattern
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { HomeStateProps } from './type'
+ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { CalcType, HomeStateProps } from './type'
 
 const initialState: HomeStateProps = {
   plans: [],
   prices: [],
-  calc: {},
+  calc: {} as CalcType,
 }
 
 const homeSlice = createSlice({

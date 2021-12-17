@@ -1,8 +1,4 @@
-interface TypeSelectData {
-  data?: Array<any>
-  labelKey: string
-  valueKey: string
-}
+import { IsEmptyTypes, TypeSelectData } from './function.type'
 
 export const getSelectData = ({
   data = [],
@@ -15,46 +11,28 @@ export const getSelectData = ({
   }))
 
 export const isEmpty = (val: any) => {
-  // test results
-  //---------------
-  // []        true, empty array
-  // {}        true, empty object
-  // null      true
-  // undefined true
-  // ""        true, empty string
-  // ''        true, empty string
-  // 0         false, number
-  // true      false, boolean
-  // false     false, boolean
-  // Date      false
-  // function  false
-
   if (!val) return true
 
   if (
-    typeof val == 'function' ||
-    typeof val == 'number' ||
-    typeof val == 'boolean' ||
-    Object.prototype.toString.call(val) === '[object Date]'
+    typeof val == IsEmptyTypes.function ||
+    typeof val == IsEmptyTypes.number ||
+    typeof val == IsEmptyTypes.boolean ||
+    Object.prototype.toString.call(val) === IsEmptyTypes.objectDate
   )
     return false
 
-  if (val == null || val.length === 0)
-    // null or 0 length array
-    return true
+  if (val == null || val.length === 0) return true
 
-  if (typeof val == 'object') {
-    // empty object
+  if (typeof val == IsEmptyTypes.object) {
+    let r = true
 
-    var r = true
-
-    for (var f in val) r = false
+    for (let f in val) r = false
 
     return r
   }
 }
 
-export const formatMonay = (val: any = 0) =>
-  (typeof val == 'string' ? parseFloat(val) : val)
+export const formatMoney = (val: any = 0) =>
+  (typeof val == IsEmptyTypes.string ? parseFloat(val) : val)
     .toFixed(2)
     .replace(/\d(?=(\d{3})+\.)/g, '$&,')

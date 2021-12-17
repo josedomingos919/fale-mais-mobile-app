@@ -1,16 +1,16 @@
-import React, { FC, ReactElement } from 'react'
+import React from 'react'
 import { DEFAULT_TOP_VALUE } from '../../../utilities/const'
 import { Container, Label, TextInput } from './style'
 import { TextBoxProps } from './type'
 
-const TextBox: FC<TextBoxProps> = ({
+const TextBox = ({
   label,
   leftIcon,
   top = DEFAULT_TOP_VALUE,
-  onChangeText = (val) => {},
+  onChangeText = () => {},
   value = null,
   ...props
-}): ReactElement => {
+}: TextBoxProps): JSX.Element => {
   return (
     <>
       <Container top={top}>

@@ -10,7 +10,7 @@ export type GetDestinationByOriginNameType = {
   originName: string
 }
 
-export type GetDistictOriginType = {
+export type getDistinctOriginType = {
   data: Array<any>
 }
 

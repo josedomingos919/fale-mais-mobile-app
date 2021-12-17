@@ -6,8 +6,7 @@ import TitleContainer from '../../components/containers/title'
 import TextBox from '../../components/Inputs/TextBox'
 import { Icons } from '../../components/icons'
 import Button from '../../components/Inputs/Button'
-import { color } from '../../utilities/color'
-import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
+import { color } from '../../utilities/color' 
 import FloatButton from '../../components/Inputs/FloatButton'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Select from '../../components/Inputs/Select'
@@ -15,11 +14,12 @@ import { getAllPlan, getAllPrice, getCalc } from '../../api/api.routes'
 import { saveCalc, setPlans, setPrices } from '../../store/reducers/home'
 import { getSelectData } from '../../utilities/function'
 import { alert } from '../../components/Shared/alert'
-import { getDistictOrigin, getOriginNameByPriceId, isFormOk } from './script'
+import { getDistinctOrigin, getOriginNameByPriceId, isFormOk } from './script'
 import { ScreenProps } from '../../routes/types'
 import { Linking } from 'react-native'
 import { COMPANY_LINKEDIN } from '../../utilities/const'
-
+import TouchAbleLabel from '../../components/Inputs/TouchAbleLabel'
+ 
 export default function Login({ navigation }: ScreenProps) {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.homeReducer)
@@ -30,7 +30,7 @@ export default function Login({ navigation }: ScreenProps) {
   const [destinationValue, setDestinationValue] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
 
-  async function inicialize() {
+  async function initialize() {
     const planResponse = await getAllPlan()
     const priceResponse = await getAllPrice()
 
@@ -76,21 +76,21 @@ export default function Login({ navigation }: ScreenProps) {
 
     setIsLoading(true)
 
-    const respose = await getCalc({
+    const response = await getCalc({
       destination: formData.destination,
       origin: formData.origin,
       planId: formData.planId,
       duration: formData.duration,
     })
 
-    if (respose.error) {
+    if (response.error) {
       alert({
         title: 'Erro!',
         message: 'Não foi possivel calcular, tente mais tarde!',
         type: 'error',
       })
     } else {
-      dispatch(saveCalc({ calc: respose.data }))
+      dispatch(saveCalc({ calc: response.data }))
       navigation.navigate('Consult')
     }
 
@@ -98,7 +98,7 @@ export default function Login({ navigation }: ScreenProps) {
   }
 
   useEffect(() => {
-    inicialize()
+    initialize()
   }, [])
 
   useEffect(() => {
@@ -117,14 +117,15 @@ export default function Login({ navigation }: ScreenProps) {
             <TitleContainer label="Custo da ligação" />
 
             <Select
-              data={getDistictOrigin({
+              data={getDistinctOrigin({
                 data: getSelectData({
                   data: data.prices,
                   labelKey: 'origin',
                   valueKey: 'id',
                 }),
               })}
-              leftIcon={Icons.MaterialCommunityIcons({
+              leftIcon={Icons({
+                type: 'MaterialCommunityIcons',
                 name: 'phone-outgoing',
               })}
               label="Origem"
@@ -141,7 +142,8 @@ export default function Login({ navigation }: ScreenProps) {
                 labelKey: 'destination',
                 valueKey: 'id',
               })}
-              leftIcon={Icons.MaterialCommunityIcons({
+              leftIcon={Icons({
+                type: 'MaterialCommunityIcons',
                 name: 'phone-incoming',
               })}
               label="Destino"
@@ -154,7 +156,7 @@ export default function Login({ navigation }: ScreenProps) {
               top={24}
               keyboardType="numeric"
               label="Tempo da ligação (min)"
-              leftIcon={Icons.Entypo({ name: 'back-in-time' })}
+              leftIcon={Icons({ type: 'Entypo', name: 'back-in-time' })}
               placeholder="ex.: 20"
               value={callDurationValue}
               onChangeText={(value) => {
@@ -171,7 +173,8 @@ export default function Login({ navigation }: ScreenProps) {
                 valueKey: 'id',
               })}
               label="Plano"
-              leftIcon={Icons.MaterialCommunityIcons({
+              leftIcon={Icons({
+                type: 'MaterialCommunityIcons',
                 name: 'account-tie-voice-outline',
               })}
               top={26}
@@ -179,17 +182,18 @@ export default function Login({ navigation }: ScreenProps) {
 
             <Button
               isLoading={isLoading}
-              leftIcon={Icons.Entypo({
+              leftIcon={Icons({
+                type: 'Entypo',
                 name: 'login',
                 size: 15,
-                color: color.Secundary,
+                color: color.secondary,
               })}
               top={60}
               onPress={() => handleCalc()}
               label="Calcular"
             />
 
-            <TouchAbleLable
+            <TouchAbleLabel
               onPress={() => {
                 Linking.openURL(COMPANY_LINKEDIN)
               }}
@@ -201,9 +205,10 @@ export default function Login({ navigation }: ScreenProps) {
 
         <FloatButton
           onPress={() => resetFormData()}
-          icon={Icons.MaterialCommunityIcons({
+          icon={Icons({
+            type: 'MaterialCommunityIcons',
             name: 'progress-close',
-            color: color.Secundary,
+            color: color.secondary,
           })}
           label="Novo"
         />

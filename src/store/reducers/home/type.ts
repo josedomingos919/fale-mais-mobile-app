@@ -21,8 +21,8 @@ export type CalcType = {
   destination: string
   duration: number
   minutesOut: number
-  totalWithTolkMore: number
-  totalWithOutTolkMore: number
+  totalWithTalkMore: number
+  totalWithOutTalkMore: number
   plan: PlanType
   price: PriceType
 }

@@ -1,18 +1,18 @@
 import React from 'react'
 import MainContainer from '../../components/containers/main'
-import {
-  CardTotal,
-  Container,
-  ContainerTotal,
-  Header,
+import { 
   Image,
-  MoneyTextTotal,
-  PageContent,
+  Header,
+  CardTotal,
   TextTotal,
+  Container,
+  PageContent,
+  TextInfoLeft,
+  TextInfoRight,
+  ContainerTotal,
+  MoneyTextTotal,
   ContainerMoreInfo,
   ContainerMoreInfoLine,
-  TextInfoRight,
-  TextInfoLeft,
 } from './styles'
 import { Icon } from './../../assets'
 import TitleContainer from '../../components/containers/title'
@@ -21,7 +21,7 @@ import { color } from '../../utilities/color'
 import FloatButton from '../../components/Inputs/FloatButton'
 import { useAppSelector } from '../../store/hooks'
 import { ScreenProps } from '../../routes/types'
-import { formatMonay } from '../../utilities/function'
+import { formatMoney } from '../../utilities/function'
 
 export default function Consult({ navigation }: ScreenProps) {
   const calcData = useAppSelector((state) => state.homeReducer.calc)
@@ -35,13 +35,13 @@ export default function Consult({ navigation }: ScreenProps) {
           </Header>
 
           <PageContent>
-            <TitleContainer label={'Resultado'} />
+            <TitleContainer label='Resultado' />
 
             <ContainerTotal>
               <CardTotal>
                 <TextTotal>Total</TextTotal>
                 <MoneyTextTotal>
-                  $ {formatMonay(calcData?.totalWithTolkMore)}
+                  $ {formatMoney(calcData?.totalWithTalkMore)}
                 </MoneyTextTotal>
               </CardTotal>
             </ContainerTotal>
@@ -55,7 +55,7 @@ export default function Consult({ navigation }: ScreenProps) {
               <ContainerMoreInfoLine>
                 <TextInfoRight>S/ Plano:</TextInfoRight>
                 <TextInfoLeft>
-                  $ {formatMonay(calcData?.totalWithOutTolkMore)}
+                  $ {formatMoney(calcData?.totalWithOutTalkMore)}
                 </TextInfoLeft>
               </ContainerMoreInfoLine>
 
@@ -84,9 +84,10 @@ export default function Consult({ navigation }: ScreenProps) {
 
         <FloatButton
           onPress={() => navigation.goBack()}
-          icon={Icons.Entypo({
+          icon={Icons({
+            type: 'Entypo',
             name: 'arrow-with-circle-left',
-            color: color.Secundary,
+            color: color.secondary,
           })}
           label="Novo"
         />

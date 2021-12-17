@@ -1,18 +1,16 @@
-import { ReactElement } from 'react'
-
 export type SelectItemType = {
   value: any
   label: string
 }
 
 export type SelectProps = {
-  data: Array<SelectItemType>
-  label?: string
   top?: number
+  label?: string
+  data: Array<SelectItemType>
   placeholder?: string
-  leftIcon?: ReactElement
+  leftIcon?: JSX.Element
   selectedValue?: any
-  setSelectedValue?: (value: any) => any
+  setSelectedValue?: (value: any) => void
 }
 
 export type ContainerType = {

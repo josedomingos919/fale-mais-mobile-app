@@ -8,21 +8,14 @@ const RootStack = createStackNavigator<RootStackParamList>()
 
 export default function PublicRoutes() {
   return (
-    <RootStack.Navigator initialRouteName="Home">
-      <RootStack.Screen
-        name="Home"
-        options={{
-          headerShown: false,
-        }}
-        component={HomeScreen}
-      />
-      <RootStack.Screen
-        options={{
-          headerShown: false,
-        }}
-        name="Consult"
-        component={ConsultScreen}
-      />
+    <RootStack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <RootStack.Screen name="Home" component={HomeScreen} />
+      <RootStack.Screen name="Consult" component={ConsultScreen} />
     </RootStack.Navigator>
   )
 }

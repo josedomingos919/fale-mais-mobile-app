@@ -25,8 +25,8 @@ export const IconView = styled.View`
   height: 100%;
   width: 50px;
   margin-right: 15px;
-  background-color: ${color.balckOpacity1};
+  background-color: ${color.blackOpacity1};
 `
 export const Label = styled.Text`
-  color: ${color.Secundary};
+  color: ${color.secondary};
 `

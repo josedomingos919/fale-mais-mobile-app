@@ -1,20 +1,18 @@
-import React, { FC, ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 import { DEFAULT_TOP_VALUE } from '../../../utilities/const'
 import { Container, ViewContent, Label } from './style'
 import { ButtonProps } from './type'
 
-const FloatButton: FC<ButtonProps> = ({
-  label,
+const FloatButton = ({
   icon,
-  top = DEFAULT_TOP_VALUE,
+  label,
   onPress,
+  top = DEFAULT_TOP_VALUE,
   ...props
-}): ReactElement => {
-  return (
-    <Container top={top} onPress={onPress} {...props} activeOpacity={0.4}>
-      <ViewContent>{icon ? icon : <Label>{label}</Label>}</ViewContent>
-    </Container>
-  )
-}
+}: ButtonProps): ReactElement => (
+  <Container activeOpacity={0.4} top={top} onPress={onPress} {...props}>
+    <ViewContent>{icon ?? <Label>{label}</Label>}</ViewContent>
+  </Container>
+)
 
 export default FloatButton

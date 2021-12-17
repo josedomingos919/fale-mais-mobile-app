@@ -11,8 +11,8 @@ export const Text = styled.Text`
   font-weight: bold;
   letter-spacing: 2px;
   margin-bottom: 10px;
-  color: ${color.fristBlue};
-  border: 0px solid ${color.balckOpacity1};
+  color: ${color.firstBlue};
+  border: 0px solid ${color.blackOpacity1};
   padding-bottom: 5px;
   font-size: ${font.size.large}px;
   padding-left: 15px;

@@ -23,6 +23,7 @@ export const getAllPrice = async () => {
       data: response?.data || [],
     }
   } catch (err) {
+    console.log( "teste=> " ,err)
     return {
       error: true,
       response: err,
