@@ -28,5 +28,5 @@ export const IconView = styled.View`
   background-color: ${color.blackOpacity1};
 `
 export const Label = styled.Text`
-  color: ${color.Secondary};
+  color: ${color.secondary};
 `

@@ -22,7 +22,7 @@ const Button = ({
   >
     <IconView>
       {isLoading ? (
-        <ActivityIndicator color={color.Secondary} size={'small'} />
+        <ActivityIndicator color={color.secondary} size={'small'} />
       ) : (
         leftIcon
       )}

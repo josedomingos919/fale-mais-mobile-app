@@ -1,4 +1,4 @@
-export type TouchAbleLableProps = {
+export type TouchAbleLabelProps = {
   label?: string
   top?: number
   onPress?: () => any

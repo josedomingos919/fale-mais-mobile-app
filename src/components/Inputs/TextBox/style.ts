@@ -23,6 +23,6 @@ export const Label = styled.Text`
   margin-bottom: -18px;
   margin-left: 27px;
   color: ${color.firstBlue};
-  background-color: ${color.Secondary};
+  background-color: ${color.secondary};
   padding: 5px;
 `

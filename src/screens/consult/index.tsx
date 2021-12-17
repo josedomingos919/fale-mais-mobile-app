@@ -87,7 +87,7 @@ export default function Consult({ navigation }: ScreenProps) {
           icon={Icons({
             type: 'Entypo',
             name: 'arrow-with-circle-left',
-            color: color.Secondary,
+            color: color.secondary,
           })}
           label="Novo"
         />

@@ -6,8 +6,7 @@ import TitleContainer from '../../components/containers/title'
 import TextBox from '../../components/Inputs/TextBox'
 import { Icons } from '../../components/icons'
 import Button from '../../components/Inputs/Button'
-import { color } from '../../utilities/color'
-import TouchAbleLable from '../../components/Inputs/TouchAbleLable'
+import { color } from '../../utilities/color' 
 import FloatButton from '../../components/Inputs/FloatButton'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Select from '../../components/Inputs/Select'
@@ -19,6 +18,7 @@ import { getDistictOrigin, getOriginNameByPriceId, isFormOk } from './script'
 import { ScreenProps } from '../../routes/types'
 import { Linking } from 'react-native'
 import { COMPANY_LINKEDIN } from '../../utilities/const'
+import TouchAbleLabel from '../../components/Inputs/TouchAbleLabel'
 
 export default function Login({ navigation }: ScreenProps) {
   const dispatch = useAppDispatch()
@@ -186,14 +186,14 @@ export default function Login({ navigation }: ScreenProps) {
                 type: 'Entypo',
                 name: 'login',
                 size: 15,
-                color: color.Secondary,
+                color: color.secondary,
               })}
               top={60}
               onPress={() => handleCalc()}
               label="Calcular"
             />
 
-            <TouchAbleLable
+            <TouchAbleLabel
               onPress={() => {
                 Linking.openURL(COMPANY_LINKEDIN)
               }}
@@ -208,7 +208,7 @@ export default function Login({ navigation }: ScreenProps) {
           icon={Icons({
             type: 'MaterialCommunityIcons',
             name: 'progress-close',
-            color: color.Secondary,
+            color: color.secondary,
           })}
           label="Novo"
         />
