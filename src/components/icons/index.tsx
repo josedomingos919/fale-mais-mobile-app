@@ -15,9 +15,9 @@ const iconsTypes: IconPropsTypes = {
 
 export const Icons = ({
   name,
+  type,
   size = MIN_ICON_SIZE,
   color = DEFAULT_ICON_COLOR,
-  type,
 }: IconType) => {
   const IconSelected = iconsTypes[type]
 
